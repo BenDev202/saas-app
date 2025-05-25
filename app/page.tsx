@@ -1,8 +1,24 @@
-import React from 'react'
+import CompanionCard from "@/components/CompanionCard"
+import CompanionList from "@/components/CompanionList"
+import Cta from "@/components/CTA"
 
 const Page = () => {
   return (
-    <div>Page</div>
+    <main>
+      <h1>Popular Companions</h1>
+
+
+      <section className="home-section">
+        <CompanionCard />
+        <CompanionCard />
+        <CompanionCard />
+      </section>
+
+      <section className="home-section">
+        <CompanionList />
+        <Cta />
+      </section>
+    </main>
   )
 }
 
