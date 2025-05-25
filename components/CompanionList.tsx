@@ -1,4 +1,12 @@
-import React from 'react'
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+    TableCaption,
+} from '@/components/ui/table';
+
 
 const CompanionList = () => {
   return (
