@@ -6,7 +6,14 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
+
+  companionName: z.string().min(2).max(50),
+  subject: z.string().min(2).max(50),
+  topic: z.string().min(2).max(50),
+  voiceType: z.string().min(2).max(50),
+  speakStyle: z.string().min(2).max(50),
+  language: z.string({required_error: "Please select a language",}),
+
 })
 
 
@@ -16,7 +23,7 @@ const CompanionForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      companionName: "",
     },
   })
  
