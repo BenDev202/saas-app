@@ -5,32 +5,48 @@ import { useForm } from "react-hook-form"
 
 import { z } from "zod"
 
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+
+
+
 const formSchema = z.object({
 
-  companionName: z.string().min(2).max(50),
-  subject: z.string().min(2).max(50),
-  topic: z.string().min(2).max(50),
-  voiceType: z.string().min(2).max(50),
-  speakStyle: z.string().min(2).max(50),
-  language: z.string({required_error: "Please select a language",}),
+  name: z.string().min(1, {message: 'Companion is required'}),
+  subject: z.string().min(1, {message: 'Subject is required'}),
+  topic: z.string().min(1, {message: 'Topic is required'}),
+  voice: z.string().min(1, {message: 'Voice is required'}),
+  style: z.string().min(1, {message: 'Style is required'}),
+  duration: z.coerce.number().min(1, {message: 'Duration is required'}),
 
 })
 
 
 const CompanionForm = () => {
-
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      companionName: "",
+      name: "",
+      subject: "",
+      topic: "",
+      voice: "",
+      style: "",
+      duration: 15,
     },
   })
  
-  // 2. Define a submit handler.
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+
     console.log(values)
   }
 
